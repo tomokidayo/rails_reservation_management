@@ -18,6 +18,23 @@
   </head>
 
   <body>
+    <header style="display:flex; justify-content:space-between; padding:10px 30px; border-bottom:1px solid #ccc;">
+    <div>
+      <%= link_to "PotepanShare", root_path, style: "font-weight:bold; font-size:20px;" %>
+    </div>
+
+    <div>
+      <% if current_user %>
+        <%= current_user.user_name %>
+        <%= link_to "ログアウト", logout_path, data: { turbo_method: :delete } %>
+      <% else %>
+        <%= link_to "ログイン", login_path %>
+        <%= link_to "新規登録", new_user_path %>
+      <% end %>
+    </div>
+  </header>
     <%= yield %>
   </body>
 </html>
+
+
